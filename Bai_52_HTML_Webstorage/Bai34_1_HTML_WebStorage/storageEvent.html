@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 34_1_Local Storage</title>
+	</head>
+	
+	<body>
+		<div>
+			<label>Item</label>
+			<input id="input-item" type="text" name="item" required />
+			<button id="add-button" type="button">Add</button>
+			<br />
+		</div>
+
+		<div>
+			<ul id="menu">
+			</ul>
+		</div>
+
+		<script>
+			var storageKey = 'item';
+
+			var addButton =  document.getElementById('add-button');
+			addButton.addEventListener('click', addItem);
+
+			function addItem() {
+				var input = document.getElementById('input-item');
+				var value = input.value;
+
+				if (value) {  // if value have a specific value
+					localStorage.setItem(storageKey, value);
+				}
+				input.value = '';
+			}
+
+			window.addEventListener('storage', ()=> {
+				console.log('a');
+				console.log(localStorage.getItem(storageKey));
+			}); // => does not work
+		</script>
+	</body>
+</html>

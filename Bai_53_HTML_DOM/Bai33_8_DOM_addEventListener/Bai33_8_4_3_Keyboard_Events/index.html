@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 33_8_4_Form Events</title>
+	</head>
+	
+	<body>
+		<h1>Keyoard Events</h1>
+
+		<hr>
+		<h2>keyup event</h2>
+		<form id="form">
+			<input id="input" type="text" name="name" />
+		</form>
+		<p>Try to press some keys</p>
+		
+		<p id="print"></p>
+
+		<script>
+			const input = document.getElementById('input');
+			const print = document.getElementById('print');
+
+			function logKey(event) {
+				print.textContent += ` ${event.key} - ${event.code}; `;
+				console.log(typeof(` ${event.key} - ${event.code}; `));
+			}
+
+			input.addEventListener('keyup', logKey);
+		</script>
+
+	</body>
+</html> 

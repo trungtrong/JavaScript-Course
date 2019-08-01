@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 27. onreadystatechange property</title>
+	</head>
+	<body>
+		<h1>Bai 27.2.6. onreadystatechange property</h1>
+		
+		<button id="change" type="button" onclick="loadDoc()";>Change Doc</button>
+		
+		<p id="print"></p>
+		
+		<script>
+			var print =  document.getElementById('print');
+
+			function loadDoc() {
+				// Step 1:
+				var xhr = new XMLHttpRequest();
+
+				// Step 2:
+				var url = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status';
+				xhr.open('GET', url, true);
+
+				// Step 3:
+				xhr.onreadystatechange= function() {
+					if (xhr.readyState === 4 &&
+							xhr.status === 200) {
+						print.textContent = xhr.responseText;
+					}
+				}
+
+				// Step 4:
+				xhr.send();
+			}
+		</script>
+	</body>
+</html>

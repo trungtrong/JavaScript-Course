@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Error Catch</title>
+	</head>
+	<body>
+
+		<script>
+			window.onerror = function(message, url, line, col, error) {
+				console.log(`${message} at ${line}: ${col} of ${url}`);
+			}
+
+			// function readData() {
+			// 	badFunc();
+			// }
+
+			// readData();
+		</script>
+
+		<script type="text/javascript" src="2-Error-Object.js"></script>
+	</body>
+</html>

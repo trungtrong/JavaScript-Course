@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Exercise 1 HTML AJAX Coders.Tokyo</title>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	
+	<body>
+		<script> 
+			var dataJSON;
+      axios.get('https://randomuser.me/api/')
+      			.then(response => {
+      				dataJSON = response.data;
+      				console.log(dataJSON);
+      				console.log(typeof dataJSON); // = object
+      				var dataString = JSON.stringify(dataJSON);
+      				document.write(dataString);
+
+      			});
+    </script>
+	</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Bai 30 Fetch</title>
+	</head>
+	
+	<body>
+		<script>
+
+			let names = ['remy', 'trungtrong', 'doxuantien'];
+
+			/*
+			async function getUsers(names) {
+
+				// fetch request per user, b/c we have an array
+				console.time('DONE');
+				let requests = names.map(name =>
+							fetch(`https://api.github.com/users/${name}`));
+
+				// [Promise, Promise, Promise]
+				// each Promise{<resolved>: Repsonse}
+
+				let responses = await Promise.all(requests);
+				return responses;
+				// [Response, Response, Response]
+			}
+
+			// Promise{<resolved>: [Response, Response, Response]}
+			getUsers(names)
+				// responses = [Response, Response, Response]
+				.then(responses =>
+						Promise.all(responses.map(r => r.json()))
+					)
+				// return = Promise{resolved: [jsonObject, jsonObject, jsonOject] }
+
+				// users = [jsonObject, jsonObject, jsonOject]
+				.then(users => {
+					console.timeEnd('DONE');
+					users.forEach(user => console.log(user))
+				})
+				.catch(error => error.message); */
+ 				
+ 				//*
+				async function getUsers(names) {
+  				let jobs = [];
+
+  				for(let name of names) {
+  					console.time('DONE');
+   				 
+   					let job = fetch(`https://api.github.com/users/${name}`)
+   										.then(successResponse => {
+        								if (successResponse.status != 200) {
+          								return null;
+        								} else {
+          								return successResponse.json();
+        								}
+     									},
+      									failResponse => {
+        									return null;
+      									}
+    									);
+    				
+    				jobs.push(job);
+  				}
+
+  			let results = await Promise.all(jobs);
+
+ 				return results;
+			}
+
+			getUsers(names)
+				.then( users => {
+					console.timeEnd('DONE') 
+					users.forEach(user => console.log(user.name))
+				}); //*/
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Bai 30 Fetch</title>
+	</head>
+	
+	<body>
+		<script>
+			async function getData(url) {
+				
+				let response = await fetch(url);
+				console.log(response);
+
+				if (response.ok) {
+					// get the response body
+					let json = await response.json();
+					let data = await response.text();
+					// return data;
+				} else {
+					console.log(`HTTP Error: ${response.status}`);
+				}
+			}
+
+			getData('https://jsonplaceholder.typicode.com/todos/1')
+				.then(data => console.log(data.slice(0, 80) + '...n'));
+		</script>
+	</body>
+</html>

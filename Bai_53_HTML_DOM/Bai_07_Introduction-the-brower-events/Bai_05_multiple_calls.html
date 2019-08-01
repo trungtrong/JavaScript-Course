@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 3: Bai 01: Introduction the browser events </title>
+</head>
+
+<body>
+  <input id="elem" type="button" class="button" value="Click me">
+  <div id="item">Hi</div>
+  <script type="text/javascript">
+    function handler1() {
+      console.log('thanks');
+    }
+
+    function handler2() {
+      console.log('bye');
+    }
+
+    elem.addEventListener('click', handler1);
+    elem.addEventListener('click', handler2);
+
+    item.style.color ="blue";
+  </script>
+</body>
+</html>

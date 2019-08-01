@@ -1,0 +1,74 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 33_8_4_Form Events</title>
+	</head>
+	
+	<body>
+		<h1>Form Events</h1>
+
+		<hr>
+		<h2>reset event</h2>
+		<h2>and reset() method</h2>
+		<form id="form">
+			<label>Test field: <input type="text"></label>
+			<br/>
+			<button type="reset">Reset</button>
+		</form>
+
+		<p id="print"></p>
+
+		<script>
+			const form = document.getElementById('form');
+			const print = document.getElementById('print'); 
+
+			function logReset(event) {
+				print.textContent = `Form reset! Time Stamp: ${event.timeStamp}`;
+			}
+
+			form.addEventListener('reset', logReset);
+
+		</script>
+
+	</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 33_8_4_Form Events</title>
+	</head>
+	
+	<body>
+		<h1>Form Events</h1>
+
+		<hr>
+		<h2>submit event</h2>
+		<h2>and submit() method</h2>
+		<form id="form">
+			<label>Username:<input type="text" name="username"></label>
+			<br/>
+			<label>Password: <input type="password" name="password"></label>
+			<br/>
+			<button type="submit">Submit</button>
+		</form>
+
+		<p id="print"></p>
+
+		<script>
+			const form = document.getElementById('form');
+
+			function logSubmit() {
+				alert('Submitted');
+			}
+
+			form.addEventListener('submit', logSubmit);
+
+		</script>
+
+	</body>
+</html>

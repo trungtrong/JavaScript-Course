@@ -1,0 +1,13 @@
+## File .docx
+*.docx
+
+##Image-RealWord
+RealWorld.png
+
+
+##Dependency Directories
+*node_modules/
+
+##Package
+*.package.json
+*.package-lock.json

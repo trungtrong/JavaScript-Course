@@ -1,0 +1,761 @@
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>33.3.4. DOM Element</title>
+  </head>
+  
+  <body>
+  <h2>Bai 33-3-4-2. Element.attributes</h2>
+  <div id="parent">
+    <p id="child"  style="color: tomato;">Hello Ajinomoto</p>
+  </div>
+
+  <p id="print"></p>
+
+  <button onclick="getListOfAttributes();">get list of attributes</button>
+
+  <p>----------------------------------------</p>
+  <script>
+    function getListOfAttributes() {
+      var element = document.getElementById('child');
+      var attrs = element.attributes;
+
+      document.getElementById('print').innerHTML = attrs;
+      console.log(attrs);
+    }
+  </script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>33.3.4. DOM Element</title>
+  </head>
+  
+  <body>
+  <h2>Bai 33-3-4-2. Element.attributes</h2>
+  <div id="parent">
+    <p id="child"  style="color: tomato;">Hello Ajinomoto</p>
+  </div>
+
+  <form>
+    <label>Result:</label>
+    <input id="result" type="text" name="text" value="" size="50" />
+  </form>
+
+  <button onclick="showAttributes();">get list of attributes</button>
+
+  <p>----------------------------------------</p>
+  <script>
+    function showAttributes() {
+    var paragraph = document.getElementById('child');
+
+    var result = document.getElementById('result');
+    if (paragraph.hasAttributes()) {
+      var attrs = paragraph.attributes;
+      var length = attrs.length;
+      var output = "";
+      
+      for (var index = 0; index < length; index++) {
+      output += attrs[index].name + ' = ' + attrs[index].value + '<br/>';  
+      }
+      result.value = output;
+    } else {
+      result.value = 'No attributes to show';
+    }       
+    }
+  </script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>33.3.4. DOM Element</title>
+  </head>
+  
+  <body>
+  <h2>Bai 33-3-4-4: Method: setAttribute(attri, value)</h2>
+  <div id="parent">
+    <p id="child"  style="color: tomato;">Hello Ajinomoto</p>
+
+    <a id="myAnchor" href="https://www.w3schools.com" target="_blank">Go to W3Schools</a>
+  </div>
+
+  <button onclick="changeTarget();">Change link target</button>
+
+  <p>----------------------------------------</p>
+  <script>
+    function changeTarget() {
+      var anchor = document.getElementById('myAnchor');
+      if (anchor.hasAttribute("target")) {
+        anchor.setAttribute("target", "_self");
+      }
+    }
+  </script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>33.3.4. DOM Element</title>
+  </head>
+  
+  <body>
+  <h2>Bai 33-3-4-5: Method: getAttribute(attribute)</h2>
+  <div id="parent">
+    <p id="child"  style="color: tomato;">Hello Ajinomoto</p>
+  </div>
+
+  <p id="print"></p>
+
+  <button onclick="printValueOfAttribute();">Print value of attribute</button>
+
+  <p>----------------------------------------</p>
+  <script>
+    function printValueOfAttribute() {
+    var paragraph = document.getElementById('child');
+    if (paragraph.hasAttribute('style')) {
+      var value = paragraph.getAttribute('style');
+      document.getElementById('print').innerHTML = value;
+    }
+    }
+  </script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>33.3.4. DOM Element</title>
+  </head>
+  
+  <body>
+  <h2>Bai 33-3-4-6: Method: removeAttribute(attribute)</h2>
+  <div id="parent">
+    <p id="child"  style="color: tomato;">Hello Ajinomoto</p>
+  </div>
+
+  <p id="print"></p>
+
+  <button onclick="removeGivenAttribute();">Remove an attribute</button>
+
+  <p>----------------------------------------</p>
+  <script>
+    function removeGivenAttribute() {
+    var paragraph = document.getElementById('child');
+    paragraph.removeAttribute('style');
+    console.log(paragraph);
+    }
+  </script>
+  </body>
+</html> -->
+
+
+<!-- ---------------------------------------------- -->
+
+<!--Bai 33.3.5. Adding and Deleting Elements -->
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+  <h2>document.createElement()</h2>
+  <h2>document.createTextNode()</h2> 
+  <h2>Node.appendChild()</h2>
+  <h2>Node.insertBefore()</h2>
+
+  <hr>
+  <h3>Ex1: A basic example</h3>
+  <div id="div1">The text above has been created dynamically</div>
+  <script src="insertText.js"></script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+  <h2>document.createElement()</h2>
+  <h2>document.createTextNode()</h2> 
+  <h2>Node.appendChild()</h2>
+  <h2>Node.insertBefore()</h2>
+
+  <hr>
+  <h3>Ex2: Using element.innerText() , to insert content to a new element</h3>
+  
+  <button onclick="insertContent();">Create a new Element</button>
+
+  <script>
+    function insertContent() {
+    var paragraph = document.createElement('p');
+
+    paragraph.innerText = "This is a new element";
+
+    document.body.appendChild(paragraph);
+    }
+  </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  <style>
+    #myDiv {
+      border: 1px solid black;
+    }
+  </style>
+  </head>
+  
+  <body>
+  <h2>document.createElement()</h2>
+  <h2>document.createTextNode()</h2> 
+  <h2>Node.appendChild()</h2>
+  <h2>Node.insertBefore()</h2>
+
+  <hr>
+  <h3>Ex3: Adding a paragraph into &lt;div&gt; element</h3>
+  
+  <div id="myDiv">
+    A DIV element
+  </div>
+
+  <button onclick="addNewElement();">Create a new Element</button>
+
+  <script>
+    function addNewElement() {
+      var para = document.createElement('p');
+      var content = document.createTextNode('This is paragraph');
+      para.appendChild(content);
+      document.getElementById('myDiv').appendChild(para);
+    }
+  </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>document.createElement()</h2>
+    <h2>document.createTextNode()</h2> 
+   <h2>Node.appendChild()</h2>
+    <h2>Node.insertBefore()</h2>
+
+    <hr>
+   <h3>Ex4: Adding a new stuff into the list</h3>
+    
+    <ul id="menu">
+     <li>Coffee</li>
+     <li>Tea</li>
+    </ul>
+  
+    <button onclick="addANewStuff();">Add a new product</button>
+
+    <p id="print"></p>
+
+    <script>
+      function addANewStuff() {
+
+        var aNewStuff = document.createElement('li');
+        var stuffContent = document.createTextNode('Water');
+
+        aNewStuff.appendChild(stuffContent);
+        document.getElementById('menu').appendChild(aNewStuff);
+      }
+  </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and childNodes property</h2>
+    <hr>
+   <h3>Ex1: View the value of childNodes  property </h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+  
+    <button onclick="printChildNodes();">Click me</button>
+
+    <p id="print"></p>
+
+    <script>
+      function printChildNodes() {
+        var myList = document.getElementById('menu');
+        console.log(myList.childNodes); 
+      }
+
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and childNodes property</h2>
+    <hr>
+   <h3>Ex2: Using removeChild</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+  
+    <button onclick="deleteChild(0);">Click me</button>
+
+    <p id="print"></p>
+
+    <script>
+      function deleteChild(index) {
+        var menu = document.getElementById('menu');
+        var childIsDeleted = menu.childNodes[index];
+        menu.removeChild(childIsDeleted);
+      }
+
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "firstChild" property</h2>
+    <hr>
+   <h3>Ex2: print the first child</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printFirstChild();">Click me</button>
+
+    <p id="print"></p>
+
+    <script>
+      function printFirstChild() {
+        var menu = document.getElementById('text');
+        var child = menu.firstChild;
+        console.log(child);
+      }
+
+    </script> 
+  </body>
+</html> -->
+ 
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "firstChild" property</h2>
+    <hr>
+   <h3>Ex3: remove all child node</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <div id="text">
+      <p>Hello</p>
+      <p>Goodbye</p>
+      <p>Messi</p>
+      <p>Bonjour</p>
+    </div>
+
+    <button onclick="removeAllChildren();">Click me</button>
+
+    <p id="print"></p>
+
+    <script>
+      function removeAllChildren() {
+        var menu = document.getElementById('menu');
+      
+        while (menu.hasChildNodes()) {
+          var aFirstChild = menu.firstChild;
+          menu.removeChild(aFirstChild);
+        }
+      }
+
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "lastChild" property</h2>
+    <hr>
+   <h3>Ex2: print the lastchild</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printLastChild();">Click me</button>
+
+    <p id="print"></p>
+
+    <script>
+      function printLastChild() {
+        var menu = document.getElementById('text');
+        var child = menu.lastChild;
+        console.log(child);
+      }
+
+    </script> 
+  </body>
+</html> -->
+
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "parentNode" property</h2>
+    <hr>
+   <h3>Ex2: print the lastchild</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printParentNode();">Print</button>
+    <br />
+    <button onclick="removeThisChild();">Remove</button>
+
+    <p id="print"></p>
+
+    <script>
+      function printParentNode() {
+        var child = document.getElementById('menu');
+        var parent = child.parentNode;
+        console.log(parent);
+      }
+
+      function removeThisChild() {
+        var child = document.getElementById('menu');
+        var parent = child.parentNode;
+        parent.removeChild(child);
+        console.log(parent);
+      }
+
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "nextSibling" property</h2>
+    <hr>
+   <h3>Ex2: print the nextElementSibling </h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printNodeSibling();">Print</button>
+    <br />
+
+    <p id="print"></p>
+
+    <script>
+      function printNodeSibling() {
+        var currentNode = document.getElementById('menu');
+        var nextNode = currentNode.nextElementSibling;
+        console.log(nextNode);
+        
+      }
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "nodeValue" property</h2>
+    <hr>
+   <h3>Ex1: print content of node </h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printNodeValue();">Print</button>
+    <br />
+
+    <p id="print"></p>
+
+    <script>
+      function printNodeValue() {
+        var node = document.getElementById('cafe');
+        var content = node.firstChild.nodeValue;
+        console.log(node.firstChild);
+      }
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.removeChild()</h2>
+    <h2>and "nodeName" property</h2>
+    <hr>
+   <h3>Ex1: print Node Name </h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printNodeName();">Print</button>
+    <br />
+
+    <p id="print"></p>
+
+    <script>
+      function printNodeName() {
+        var node = document.getElementById('para');
+        var nodeList = node.childNodes;
+        var length = nodeList.length;
+        var contentOfNodeName = "";
+        for (var i = 0; i < length; i++) {
+          contentOfNodeName += nodeList[i].nodeName + "  ";
+        }
+        console.log(contentOfNodeName);
+        //console.log(nodeList[1].firstChild.nodeValue);
+      }
+    </script> 
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>Node.replaceChild()</h2>
+    <hr>
+    <h3>Ex1: replacing an old child</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="replaceAnOldChild();">Print</button> <br>
+    <button onclick="changeContent();">Print</button>
+    <br />
+
+    <p id="print"></p>
+
+    <script>
+      function replaceAnOldChild() {
+        // B1: find an old child want to be replaced
+        var oldNode = document.getElementById('text');
+
+        //B2: create a new element node
+        var newNode = document.createElement('p');
+
+        // B3: give it an id attribute called "para-2"
+        newNode.id = 'para-2';
+
+        // B4: create some content for the new element
+        var contentOfNewNode = document.createTextNode('This is the replaceChild() method');
+
+        // B5: apply that content to the new Element
+      newNode.appendChild(contentOfNewNode);
+
+      document.body.replaceChild(newNode, oldNode); 
+      console.log(document.body);
+      }
+
+      function changeContent() {
+        var textNode = document.createTextNode('Water');
+        var item = document.getElementById('menu').childNodes[0];
+        // C1:
+        item.innerHTML = 'Water';
+        //C2:
+        //item.replaceChild(textNode, item.firstChild);
+      }
+    </script> 
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+   <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 33.3.5. Adding and Deleting Elements</title>
+  </head>
+  
+  <body>
+    <h2>1.5.2.11. Node.textContent property</h2>
+    <hr>
+    <h3>Ex1: print the content of the list</h3>
+    
+    <ul id="menu"><li id="cafe">Coffee</li><li>Tea</li><li>Water</li></ul>
+
+    <p id="para">
+      <span>Hello</span>
+    </p>
+    
+    <div id="text"><p>Hello</p><p>Goodbye</p><p>Messi</p><p>Bonjour</p></div>
+
+    <button onclick="printContentOfList();">Print</button> <br/>
+
+    <button onclick="changeContent();">Change</button> <br/> 
+
+    <p id="print"></p>
+
+    <script>
+      function printContentOfList() {
+        var list = document.getElementById('menu');
+        var content = list.textContent;
+        console.log(content);
+        document.getElementById('print').textContent = content; 
+      }
+
+      function changeContent() {
+        var item = document.getElementById('cafe');
+        item.textContent = "Coffe Cappuchino";
+      }
+    </script> 
+  </body>
+</html>

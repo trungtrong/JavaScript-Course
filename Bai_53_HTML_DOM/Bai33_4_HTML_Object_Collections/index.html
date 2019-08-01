@@ -1,0 +1,120 @@
+<!--
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>33.5.HTML Object Collection</title>
+	</head>
+	<style>
+		img {
+			width: 150px;
+			height: 120px;
+		}
+	</style>
+	<body>
+		<h2>33.5. Finding HTML Objects by HTML Object Collection</h2>
+		<h3>Ex1: Counting the images in the Collection</h3>
+		<img src="https://www.w3schools.com/jsref/klematis.jpg" alt="purple flower" />
+		<img src="https://www.w3schools.com/jsref/klematis2.jpg" alt="pink flower" />
+
+		<p>Click the button to display the number of images in the document</p>
+
+		<p id="print"></p>
+		
+		<button onclick="countImage();">Click me</button>
+
+		<script>
+			function countImage() {
+				var imagesCollection = document.images;
+				
+				console.log(imagesCollection);
+				document.getElementById('print').innerHTML = imagesCollection;
+
+				var numberOfImages = imagesCollection.length;
+				console.log(numberOfImages);
+			}
+		</script>
+	</body>
+</html> -->
+
+
+<!--
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>33.5.HTML Object Collection</title>
+	</head>
+	<style>
+		img {
+			width: 150px;
+			height: 120px;
+		}
+	</style>
+	<body>
+		<h2>33.5. Finding HTML Objects by HTML Object Collection</h2>
+		<h3>Ex2: Print all the link of the images</h3>
+		<img src="https://www.w3schools.com/jsref/klematis.jpg" alt="purple flower" />
+		<img id="img-2" src="https://www.w3schools.com/jsref/klematis2.jpg" alt="pink flower" />
+
+		<p>Click the button to display the number of images in the document</p>
+
+		<p id="print"></p>
+		
+		<button onclick="printLinkOfImg();">Click me</button>
+
+		<script>
+			function printLinkOfImg() {
+				var collection = document.images;
+				
+				// Method 1: Using .[index]
+				//var link = collection[0].src;
+
+				// Method 2: Using .item(index)
+				//var link = collection.item(0).src;
+
+				//Method 2: Using .nameItem(id)
+				var link = collection.namedItem('img-2').src;
+				console.log(link);
+			}
+		</script>
+	</body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>33.5.HTML Object Collection</title>
+	</head>
+	<style>
+		img {
+			width: 150px;
+			height: 120px;
+		}
+	</style>
+	<body>
+		<h2>33.5. Finding HTML Objects by HTML Object Collection</h2>
+		<h3>Ex2: Print all the link of the images</h3>
+		<img src="https://www.w3schools.com/jsref/klematis.jpg" alt="purple flower" />
+		<img id="img-2" src="https://www.w3schools.com/jsref/klematis2.jpg" alt="pink flower" />
+
+		<p>Click the button to display the number of images in the document</p>
+
+		<p id="print"></p>
+		
+		<button onclick="editImgStyle();">Click me</button>
+
+		<script>
+			function editImgStyle() {
+				var collection = document.images;
+				collection[0].style.border = '10px solid red';
+			}
+		</script>
+	</body>
+</html> -->
+

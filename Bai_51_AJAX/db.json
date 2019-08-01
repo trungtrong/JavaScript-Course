@@ -1,0 +1,22 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "content": "Hanging out"
+    },
+    {
+      "id": 2,
+      "content": "Do the washing"
+    },
+    {
+      "id": 3,
+      "content": "Clean the house"
+    },
+    {
+      "content": "Take a picture",
+      "firstName": "Fred",
+      "lastName": "Flintstone",
+      "id": 4
+    }
+  ]
+}

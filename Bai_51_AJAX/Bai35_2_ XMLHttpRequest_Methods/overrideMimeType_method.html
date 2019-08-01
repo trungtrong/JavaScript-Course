@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 27. overrideMimeType method</title>
+	</head>
+	<body>
+		<h1>Bai 27.2.8. overrideMimeType method</h1>
+		
+		<button id="ajaxButton" type="button";>make a request</button>
+		
+		<script>
+			var xhr;
+			var ajaxButton = document.getElementById('ajaxButton');
+			ajaxButton.addEventListener('click', makeRequest);
+
+			function makeRequest() {
+				xhr = new XMLHttpRequest();
+
+				if (!xhr) {
+					alert('Giving up: (Cannot create an XMLHttp instance)');
+					return false;
+				}
+
+				xhr.responseType = 'document';
+
+				xhr.overrideMimeType("text/xml");
+
+				xhr.onreadystatechange = alertContents;
+
+				var url = 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status';
+				xhr.open('GET', url, true);
+				xhr.send();
+			}
+
+			function alertContents() {
+				if (xhr.readyState === xhr.DONE) {
+					if (xhr.status === 200) {
+						console.log(xhr.response, xhr.responseXML);
+					} else {
+						alert('There was a problem with the request');
+					} 					
+				}
+			}
+		</script>
+	</body>
+</html>
+

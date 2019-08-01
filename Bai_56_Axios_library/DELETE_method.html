@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>axios library</title>
+		
+	</head>
+	
+	<body>
+		<h1>DELETE method</h1>
+		<p id="print"></p>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script> 
+			var print = document.getElementById('print');
+
+			var dataJSON;
+			const instance = axios.create({
+				baseURL: 'http://localhost:9081'
+			});
+
+			instance.delete('/todos/4')
+							.then(response => console.log(response.data)
+							)
+							.catch(error => console.log(error.request));
+    </script>
+	</body>
+</html>

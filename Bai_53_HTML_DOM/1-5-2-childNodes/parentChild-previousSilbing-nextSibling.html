@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+</head>
+
+<body>
+  <h1>My Blog</h1>
+  <div id="entry1">
+  	<h2 id="child1">Great day bird watching</h2>
+  	<p>Today I saw three...</p>
+  	<p>I took a couple of photos</p>
+  </div>
+
+  <script type="text/javascript">
+    let entry =  document.getElementById('entry1');
+    // [textNode, h2, textNode, p, textnode, p, textNode]
+
+  	let child1 = document.getElementById('child1');
+  	
+    console.log(child1.parentNode);
+
+  	console.log(child1.previousSibling); // text node
+      
+    console.log(child1.nextSibling); // <p>
+
+    // Solution: to skip text nodes, comment nodes
+    console.log(child1.parentNode);
+
+    console.log(child1.previousElementSibling); // text node
+      
+    console.log(child1.nextElementSibling); // <p>
+  </script>
+</body>
+</html>

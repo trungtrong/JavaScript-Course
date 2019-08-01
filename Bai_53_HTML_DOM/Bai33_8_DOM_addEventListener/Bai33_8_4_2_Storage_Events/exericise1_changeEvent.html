@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Exercise 1: change Event</title>
+	</head>
+	
+	<body>
+		<h1>change event: &lt;select&gt; element</h1>
+		<h2>Filter list of student in a table</h2>
+
+		<label>Age</label>
+		<select id="select" name="age">
+		</select>
+
+		<table id="student-table">	
+		</table>
+
+		<script>
+			var studentList = [
+					{ name: 'Thinh', age: 25},
+					{ name: 'Hoang', age: 20},
+					{ name: 'Hung', age: 25},
+					{ name: 'Luat', age: 21},
+					{ name: 'Tam', age: 20},
+					{ name: 'Mai', age: 27},
+					{ name: 'Phuc', age: 35},
+			];
+
+			// Step 1:
+			// counting the occurrences of age property
+			// selectList = ['All'];
+			var selectList = studentList.reduce((accum, student) =>{
+
+			// using arr.find to check that if this element is exist in accum array
+			var isExist = accum.find(element => 
+				element === student.age
+			);
+
+			//this element doesn't exist in accum array
+			if (isExist !== student.age) {
+				accum.push(student.age);
+			}
+				//Nhận Xét => vẫn chưa apply Algorithm
+				return accum;	
+			} ,['All']);
+
+			// Step 2: sorting selectList of student age
+			selectList.sort((a, b) => a - b);
+
+			//console.log(selectList);
+
+			var select = document.getElementById('select');
+			select.addEventListener('change', onAgeFilterChange);
+
+			function onAgeFilterChange() {
+				// Step 1: get value of select
+				var selectedValue = select.value;
+				// Step 2: filter the value of studenList
+				var filteredStudent = studentList.filter(student => {
+						if (selectedValue === 'All') {
+							// return all the cases , => keep the original studentList
+							return true; 
+						} else {
+						// b/c select value = <String>
+							return student.age ===  parseInt(selectedValue);
+						}
+					});
+				// Step 3: re-render
+				renderTable(filteredStudent);
+			}
+
+			/********************************************/
+			function renderTable(object) {
+				var table = document.getElementById('student-table');
+				var tableContent = object.map(student => 
+					'<tr><td>' + student.name + '</td><td>' + student.age + '</td></tr>');
+
+				// console.log(tableContent);
+
+				table.innerHTML = tableContent.join('');
+			}
+
+			renderTable(studentList);
+
+			function renderSelect() {
+				var selectContent = selectList.map(age =>
+					'<option>' + age + '</option>' );
+				//console.log(selectContent);
+				select.innerHTML = selectContent.join('');
+			}
+
+			renderSelect();
+		</script>
+	</body>
+</html>

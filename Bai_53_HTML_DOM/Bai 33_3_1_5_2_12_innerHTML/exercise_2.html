@@ -1,0 +1,77 @@
+<!-- 
+- Sử dụng getElementsByTagName() để lấy ra danh sách các <p> có class là 'foo'
+- Lặp qua các phần tử và thay đổi nội dung của từng phần tử bằng cách append (thêm vào cuối) một đường link tới coders.tokyo site
+-->
+
+<!-- https://jsfiddle.net/trungtrong/ncoep7vL/2/ -->
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>33.5.HTML Object Collection</title>
+	</head>
+	
+	<body>
+		<h2>Exercise 1 </h2>
+		
+		<p class="foo">Hello </p>
+
+		<p id="bye">Goodbye </p>
+
+		<div>
+			<p class="foo">Bonjour </p>
+		</div>
+
+		<p class="foo">Messi </p>
+		
+		<button onclick="findFoo();">Click me</button>
+
+		<script>
+			function findFoo() {
+				var paraList = document.getElementsByTagName('p');
+				var paraArray = Array.from(paraList);
+				var fooList = paraArray.filter(element => element.getAttribute('class') === 'foo');
+				//var length = fooList.length;
+
+				/*B2:  Lặp qua các phần tử và thay đổi nội dung của từng phần tử bằng cách append (thêm vào cuối) một đường link tới coders.tokyo site */
+				
+
+				/*for (var i = 0; i < length; i++)  {
+					var newAnchor = document.createElement('a');
+					
+					newAnchor.href = 'https://coders.tokyo/'
+					newAnchor.target = '_blank';
+
+					newAnchor.textContent = 'Coders.Tokyo';
+
+					fooList[i].appendChild(newAnchor);
+				} */
+
+				fooList.map(element => {
+					var newAnchor = document.createElement('a');
+					
+					newAnchor.href = 'https://coders.tokyo/';
+					newAnchor.target = '_blank';
+
+					newAnchor.textContent = 'Coders.Tokyo';
+
+					element.appendChild(newAnchor);
+				});
+			}
+		</script>
+	</body>
+</html>
+
+<!-- 	Array.from(document.getElementsByTagName("p")) // tìm tất cả thẻ p
+     .filter(function(el) { //  lọc ra các thẻ có class foo
+       return el.classList.contains("foo");
+     })
+     .map(function(el) { // lặp và thêm thẻ a
+       let a = document.createElement("a");
+       a.setAttribute("href", "#!");
+       a.innerText = "Link";
+       el.appendChild(a);
+     }); -->

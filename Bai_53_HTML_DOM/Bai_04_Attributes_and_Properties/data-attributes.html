@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+  <style>
+    div.order[data-order-state="new"] {
+      color: green;
+    }
+
+    div.order[data-order-state="pending"] {
+      color: blue;
+    }
+
+    div.order[data-order-state="canceled"] {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="item" data-about="Elephants">
+    Hello Ajinomoto
+  </div>
+
+  <div id="order" class="order" data-order-state="new">
+    Goodbye everyone
+  </div>
+
+  <script type="text/javascript">
+    let item = document.querySelector('.item');
+    console.log(item.dataset.about);
+
+    //item.dataset.about = 'Tigers';
+    item.dataset['about'] = 'Tigers';
+    console.log(item.dataset.about);
+
+    let order = document.querySelector('div[data-order-state]');
+    // get
+    console.log(order.dataset.orderState);
+    //set
+    order.dataset.orderState = 'pending';
+  </script>
+</body>
+</html>

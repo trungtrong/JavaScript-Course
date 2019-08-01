@@ -1,0 +1,174 @@
+<!--
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 12 onclick</title>
+	</head>
+	
+	<body>
+		<h2>Bai 12 onclick</h2>
+		<h3>page 29-25</h3>
+			<input id="new-item" type="text" name="item" placeholder="Fill in your item" size="20" required />
+			<button onclick="addItem();">Add</button>
+
+		<ul id="menu">
+			/* <li>Take shower</li>
+			<li>Have a walk</li>
+			<li>Go to bed</li> */
+		</ul>
+
+		<script>
+			var todoList = [];
+
+			function addItem() {
+				//M1: get value of the input
+				var input = document.getElementById('new-item');
+				var newItem = input.value;
+				// M2: add to todoList array
+				if (newItem !== '') {
+					todoList.push(newItem);
+					// M3: re-render
+					render();
+					input.value = '';
+				}
+			}
+
+			function render() {
+				var htmlMenu = document.getElementById('menu');
+				var contentArr = todoList.map(element => 
+					'<li>' + element + '</li>');
+
+				htmlMenu.innerHTML = contentArr.join('');
+			}
+		</script>
+	</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 12 onclick</title>
+	</head>
+	
+	<body>
+		<h2>Bai 12 onclick</h2>
+		<h3>Ex2: Adding 'remove' button</h3>
+		<h3>page 29-25</h3>
+			<input id="new-item" type="text" name="item" placeholder="Fill in your item" size="20" required />
+			<button onclick="addItem();">Add</button>
+
+		<ul id="menu">
+		</ul>
+
+		<script> 
+			var todoList; // todoList = undefined
+			var length;
+			var contentArr;
+
+			function addItem() {
+				//M1: get value of the input
+				var input = document.getElementById('new-item');
+				var newItem = input.value;
+				// M2: add to todoList array
+				if (newItem !== '') {
+					
+					if (todoList === undefined) {
+						todoList = [];	 
+					}
+					todoList.push(newItem);
+					
+					// M3: re-render
+					length = todoList.length;
+					render(length - 1);
+					input.value = '';
+				}
+				// var index = todoList.length;
+
+				// console.log(index);
+				// console.log(todoList);
+			}
+
+			function render(index) {
+				var htmlMenu = document.getElementById('menu');
+
+				// create <button> element
+				//<button>
+				var buttonId = 'id="item-' + index +'"';
+				var buttonOnClick = ' onclick ="removeItem(' + index +');">';
+				var buttonContent = 'Remove';
+				var button = '<button '+ buttonId + buttonOnClick + buttonContent +'</button>';
+
+				// var contentArr = todoList.map(element => 
+				// 	'<li>' + element + ' ' + button + '</li>');
+				if (contentArr === undefined) {
+					contentArr = [];
+					contentArr[0] = '<li>' + todoList[index] + ' ' + button + '</li>';
+				}
+				else {
+					contentArr[index] = '<li>' + todoList[index] + ' ' + button + '</li>';
+				}
+
+				console.log(contentArr);
+
+				htmlMenu.innerHTML = contentArr.join('');
+			}
+
+			function removeItem(index) {
+				// var thisItem = this.parentNode;
+				// parentNode.remove();
+				// //parentNode.textContent = 
+
+				// M1: remove this item from list
+				var button = document.getElementById('item-' + index);
+				var itemNode = button.parentNode;
+				itemNode.remove();
+
+				/*************************************/
+
+				// Method 1_1: remove following string 
+
+				// M2: find the content of this item from todoList
+				console.log(itemNode.textContent); 
+				// = <contentOfitem> + " " + Remove
+				
+				var itemNodeContent = itemNode.textContent;
+
+				var lastIndex = itemNodeContent.lastIndexOf('Remove');
+				console.log(lastIndex);
+
+				var itemContent = itemNodeContent.substr(0, lastIndex - 1); 
+
+				// M3: remove it from todoList
+				todoList = todoList.filter(element => 
+					element !== itemContent);
+				console.log(todoList); 
+
+				/*************************************/
+				//             => ERROR
+				
+				// Method 1_2: remove following index
+
+				// copy the begin to the item that is front of this item that is deleted
+				
+				/*console.log(todoList);
+				var frontElements = todoList.slice(0, index);
+				var backElements = todoList.slice(index + 1);
+
+				todoList = frontElements.concat(backElements);
+				console.log(todoList);
+
+				//
+				var frontContentArr = contentArr.slice(0, index);
+				var backEContentArr = contentArr.slice(index + 1);
+
+				contentArr = frontContentArr.concat(backEContentArr);
+				console.log(contentArr); */
+			} 
+		</script>
+	</body>
+</html>

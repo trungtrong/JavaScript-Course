@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+</head>
+
+<body>
+  <ul class="unordered-list">
+    <li>1</li>
+    <li class="nextSibling">2</li>
+  </ul>
+
+  <script type="text/javascript">
+    let list = document.querySelector('.unordered-list');
+    // create element 
+    let newItem3 = document.createElement('li');
+    newItem3.innerHTML = '3';
+
+    // append to list
+    list.appendChild(newItem3);
+
+    // parentElement(newNode, nextSibling)
+    let nextSibling = document.querySelector('.nextSibling');
+    // create element 
+    let newItem4 = document.createElement('li');
+    newItem4.innerHTML = '4';
+
+    // append to list
+    list.insertBefore(newItem4, nextSibling);
+  </script>
+</body>
+</html>

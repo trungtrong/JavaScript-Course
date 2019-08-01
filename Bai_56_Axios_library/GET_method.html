@@ -1,0 +1,60 @@
+
+
+<!-- 22.1. axios API -->
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>axios library</title>
+		
+	</head>
+	
+	<body>
+		<h1>axiox(config)</h1>
+		<p id="print"></p>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script> 
+			var print = document.getElementById('print');
+
+			var dataJSON;
+			axios({
+				method: 'get',
+				url: 'http://localhost:9081/todos/',
+				responseTye: 'stream'
+			})
+				.then(response => {
+					dataJSON = response.data;
+					var dataString = JSON.stringify(dataJSON);
+					print.textContent = dataString;
+				});
+
+    </script>
+	</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>axios library</title>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	
+	<body>
+		<script> 
+			var dataJSON;
+      axios.get('http://localhost:9081/todos/')
+      			.then(response => {
+      				dataJSON = response.data;
+      				console.log(dataJSON);
+      				console.log(typeof dataJSON); // = object
+      				var dataString = JSON.stringify(dataJSON);
+      				document.write(dataString);
+
+      			});
+    </script>
+	</body>
+</html>

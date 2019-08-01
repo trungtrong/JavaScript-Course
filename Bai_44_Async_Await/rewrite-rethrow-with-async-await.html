@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Rewrite rethrow using async/await</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			class HttpError extends Error {
+				constructor(response) {
+					super(`${response.status} for ${response.url}`);
+					this.name = 'HttpError';
+					this.response = response;
+				}
+			}
+
+			async function loadJson(url) {
+				let response = await fetch(url);
+
+				if (response.status === 200) {
+					return response.json();
+				}
+
+				throw new HttpError(response);
+			}
+
+			// Ask for a user name until github return a valid user
+			// get rid of the recursion in demoGithubUser
+			async function demoGithubUser() {
+
+				let user;
+				while(true) {
+					let name = prompt('Enter a name', 'inlia');
+
+					try {
+						user = await loadJson(`https://api.github.com/users/${name}`);
+						break; // get out of while loop
+					} catch(error) {
+						if (error instanceof HttpError && error.response.status === 404) {
+							console.log('No such user');
+						} else {
+							throw error;
+						}
+					}
+
+				}
+				console.log(user.name);
+				return user;
+			}
+
+			demoGithubUser();
+		</script> 
+	</body>
+</html>

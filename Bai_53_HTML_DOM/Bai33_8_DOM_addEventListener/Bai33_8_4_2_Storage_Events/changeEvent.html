@@ -1,0 +1,71 @@
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 33_8_4_Form Events</title>
+	</head>
+	
+	<body>
+		<h1>Form Events</h1>
+
+		<hr>
+		<h2>change event</h2>
+		<h2>and change() method</h2>
+
+		<input type="text" id="input" name="name" placeholder="Enter some text" />
+		<br>
+		<p id="print"></p>
+
+		<script>
+			const input = document.getElementById('input');
+			const print = document.getElementById('print');
+
+			function updateValue(event) {
+				print.textContent = event.srcElement.value;
+			}
+
+			input.addEventListener('change', updateValue);
+		</script>
+
+	</body>
+</html>  -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 33_8_4_Form Events</title>
+	</head>
+	
+	<body>
+		<h1>Form Events</h1>
+
+		<hr>
+		<h2>change event</h2>
+		<h2>and change() method</h2>
+
+		<label>Choose an ice cream flavor:
+			<select class="ice-cream" name="ice-cream">
+				<option value="">Select One</option>
+				<option value="chocolate">Chocolate</option>
+				<option value="vanilla">Vanilla</option>
+			</select>
+		</label>
+
+		<p class="print"></p>
+
+		<script>
+			const selectElement = document.querySelector('.ice-cream');
+			const print = document.querySelector('.print');
+
+			function updateValue(event) {
+				print.textContent = `You like ${event.target.value}`;
+			}
+
+			selectElement.addEventListener('change', updateValue);
+		</script>
+
+	</body>
+</html> 

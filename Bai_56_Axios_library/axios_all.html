@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>axios library</title>
+		
+	</head>
+	
+	<body>
+		<h1>axios.all(iterable) method</h1>
+		<p id="print"></p>
+
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script> 
+			
+			const instance = axios.create({
+				baseURL: 'http://localhost:9081',
+			});
+
+			function getTodos() {
+				return instance.get('/todos/7');
+			}
+
+			function getTodos1() {
+				return instance.get('/todos/2');
+			}
+
+			axios.all([getTodos(), getTodos1()])
+							.then(axios.spread(
+								function (resTodos, resTodos1) {
+									console.log(resTodos.data);
+									console.log(resTodos1.data);
+							}))
+							.catch(
+								function (errTodos, errTodos1) {
+									console.log('T_',errTodos.message);
+									console.log('T1_',errTodos1.message);
+								});
+
+    </script>
+	</body>
+</html>

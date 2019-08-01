@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 12 onclick</title>
+	</head>
+	
+	<body>
+		<h2>Bai 12 onclick</h2>
+		<h3>Ex2: Adding 'remove' button</h3>
+		<h3>page 29-25</h3>
+			<input id="input-item" type="text" name="item" placeholder="Fill in your item" size="20" required />
+			<button onclick="addItem();">Add</button>
+
+		<ul id="menu"></ul>
+
+		<script> 
+			var todoList; // todoList = undefined
+			var length;
+			var contentArr;
+
+			function render(newIndex) {
+				var htmlMenu = document.getElementById('menu');
+
+				// create <button> element
+				//<button>
+				var index = 0;
+				contentArr = todoList.map(element => {
+					if ( index <= newIndex) {
+						var buttonId = 'id="item-' + index +'"';
+						var buttonOnClick = ' onclick ="removeItem(' + index +');">';
+						var buttonContent = 'Remove';
+						var button = '<button '+ buttonId + buttonOnClick + buttonContent +'</button>';
+						index++;
+				 	}
+				 	return '<li>' + element + ' ' + button + '</li>';
+				 });
+				
+				console.log(contentArr);
+
+				htmlMenu.innerHTML = contentArr.join('');
+			}
+
+			function addItem() {
+				//Step1: get value of the input
+				var input = document.getElementById('input-item');
+				var newItem = input.value;
+				// Step2: add to todoList array
+				if (newItem !== '') {
+					
+					if (todoList === undefined) {
+						todoList = [];	 
+					}
+					todoList.push(newItem);
+					
+					// Step3: re-render
+					length = todoList.length;
+					render(length - 1);
+					input.value = '';
+				}
+				// var index = todoList.length;
+
+				// console.log(index);
+				// console.log(todoList);
+			}
+
+			function removeItem(index) {
+
+				// Step1: remove this item from list
+				var button = document.getElementById('item-' + index);
+				var itemNode = button.parentNode;
+				itemNode.remove(); 
+
+				/*************************************/
+
+				// Method 1: remove following string 
+				
+				// JUDGE:  time complexity is quite longer
+				
+				// Step2: find the content of this item from todoList
+				/*
+				console.log(itemNode.textContent); 
+				// = <contentOfitem> + " " + Remove
+				
+				var itemNodeContent = itemNode.textContent;
+
+				var lastIndex = itemNodeContent.lastIndexOf('Remove');
+				console.log(lastIndex);
+
+				var itemContent = itemNodeContent.substr(0, lastIndex - 1); 
+
+				// M3: remove it from todoList
+				todoList = todoList.filter(element => 
+					element !== itemContent);
+				console.log(todoList); */
+
+				/*************************************/
+				// Method 2: remove following INDEX
+
+				// Step2_1 :remove a specified element from Array using arr.SPLICE(start, amount)
+				
+				//console.log(todoList);
+				//console.log(contentArr);
+
+				todoList.splice(index, 1); // 1 element is deleted
+				
+				console.log(todoList);
+
+				contentArr.splice(index, 1);
+				
+				console.log(contentArr);
+
+				//Step3:  render again, b/c the position of all other elements have been changed
+				render(todoList.length - 1);
+			} 
+		</script>
+	</body>
+</html>

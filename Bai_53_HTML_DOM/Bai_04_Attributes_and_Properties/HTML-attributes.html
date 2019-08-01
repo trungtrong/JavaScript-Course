@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+</head>
+
+<body>
+  <div class="item-1">
+  	<h2 class="introduce" style="color=#ff2">Great day bird watching</h2>
+    <button class="hide-button" type="button">Hide</button>
+  </div>
+
+  <script type="text/javascript">
+    let attrs = document.querySelector('.hide-button');
+
+    for (let attr of attrs.attributes) {
+      console.log(`${attr.name} = ${attr.value}`);
+    }
+
+    // setAttrubute(name, value)
+    let text = document.querySelector('.introduce');
+    text.setAttribute('style', 'color: #ccc');
+
+    console.log(text.style);
+  </script>
+</body>
+</html>

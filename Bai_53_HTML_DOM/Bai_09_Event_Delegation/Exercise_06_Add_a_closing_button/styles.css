@@ -1,0 +1,39 @@
+*, *::after, *::before {
+	 box-sizing: border-box;
+}
+
+body {
+	font-family: 'Time New Roman', serif;
+	font-size: 16px;
+}
+
+.item {
+	border-top: 2px solid lightgreen;
+	padding: 16px;
+	background: #f2f2f2;
+
+	position: relative;
+}
+
+.item .remove-button {
+	font-size: 16px;
+	font-weight: 550;
+
+	background: none;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+
+	color: darkred;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.item h3 {
+	margin: 0;
+}
+
+.item p {
+	margin: 16px 0 0 0;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+</head>
+
+<body>
+  <h1>My Blog</h1>
+  <div id="entry"><!-- list of childrent -->
+  	<h2 id="child1">Great day bird watching</h2>
+  	<p>Today I saw three...</p>
+  	<p>I took a couple of photos</p>
+  </div>
+
+  <script type="text/javascript">
+    let entry =  document.getElementById('entry');
+    
+    console.log(entry.tagName);
+    console.log(entry.nodeName);
+
+    console.log(entry.firstChild.tagName);
+    console.log(entry.firstChild.nodeName);
+  </script>
+</body>
+</html>

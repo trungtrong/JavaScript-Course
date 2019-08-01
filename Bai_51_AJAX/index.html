@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 35 HTML AJAX</title>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	</head>
+	
+	<body>
+		<h2>Bai 35 HTML AJAX</h2>
+			<input id="input-item" type="text" name="item" placeholder="Fill in your item" size="20" required />
+			<button onclick="addItem();">Add</button>
+
+		<ul id="menu"></ul>
+
+		<script> 
+			var todoList; // todoList = undefined
+			var currentLastIndex;
+			var contentArr;
+
+			// axios
+			var url = 'http://localhost:9081/todos/';
+			axios.get(url).then(response => {
+				var items = response.data; // object -array
+				//console.log('Data = ', items);
+				render(items, items.length - 1);
+			});
+
+			function render(items, lastIndex) {
+				var htmlMenu = document.getElementById('menu');
+
+				// create <button> element
+				//<button>
+				var index = 0;
+				contentArr = items.map(element => {
+					if ( index <= lastIndex) {
+						var buttonId = 'id="item-' + index +'"';
+						var buttonOnClick = ' onclick ="removeItem(' + index +');">';
+						var buttonContent = 'Remove';
+						var button = '<button '+ buttonId + buttonOnClick + buttonContent +'</button>';
+						index++;
+					}
+					return '<li>' + element.content + ' ' + button + '</li>';
+				 });
+				
+				console.log(contentArr);
+
+				htmlMenu.innerHTML = contentArr.join('');
+			}
+
+			function addItem() {
+				//Step1: get value of the input
+				var input = document.getElementById('input-item');
+				var newItem = input.value;
+				// Step2: add to todoList array
+				if (newItem !== '') {
+					
+					if (todoList === undefined) {
+						todoList = [];	 
+					}
+					todoList.push(newItem);
+					
+					// Step3: re-render
+					currentLastIndex = todoList.length - 1;
+					render(todoList, currentLastIndex);
+					input.value = '';
+				}
+			}
+
+			function removeItem(index) {
+
+				// Step1: remove this item from list
+				var button = document.getElementById('item-' + index);
+				var itemNode = button.parentNode;
+				itemNode.remove();
+
+				todoList.splice(index, 1); // 1 element is deleted
+
+				contentArr.splice(index, 1);
+
+				//Step3:  render again, b/c the position of all other elements have been changed
+				currentLastIndex = todoList.length - 1;
+
+				render(todoList, currentLastIndex);
+			} 
+		</script>
+	</body>
+</html>

@@ -1,0 +1,174 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai33_8_DOM_addEventListener</title>
+	</head>
+	
+	<body>
+	<h1>Bai 33_8_DOM_addEventListener</h1>
+
+	<hr>
+	<h3>Example 1: Add a simple listener</h3>
+		<table id="outside">
+			<tr><td id="t1">one</td></tr>
+			<tr><td id="t2">two</td></tr>
+		</table>
+
+		<script>
+			function modifyText() {
+				var t2 = document.getElementById('t2');
+				if (t2.firstChild.nodeValue === 'three') {
+					t2.firstChild.nodeValue = 'two';
+				} else {
+					t2.firstChild.nodeValue = 'three';
+				}
+			}
+			// add event listener to table
+			var el = document.getElementById('outside');
+			// Method 1: 
+			/*
+			el.addEventListener('click', modifyText, false);
+			*****************************/
+
+			//Method 2: Event listener with anonymous function
+			/*
+			el.addEventListener('click', function() {
+				modifyText();
+			}, false);
+			**************/
+
+			// Method 3: Event Listener with an arrow function
+			el.addEventListener('click', () => {
+				modifyText();
+			}, false);
+		</script>
+	</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai33_8_DOM_addEventListener</title>
+		<style>
+			#div-1, #div-2 {
+				background-color: red;
+			}
+
+			#p-1, #p-2 {
+				background-color: white;
+				width: 30%;
+				text-align: center
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>33.8.2.2. Event Bubbling and Event Capturing</h1>
+
+		<hr>
+		<h3>Example 1: Add a simple listener</h3>
+		
+		<div id="div-1">
+			<h2>Bubbling</h2>
+			<p id="p-1">Click me!</p><br><br>
+		</div>	
+		<br>
+		<div id="div-2">
+			<h2>Capturing</h2>
+			<p id="p-2">Click me</p><br><br>
+		</div>
+
+		<p id="p-3">Hello</p>
+		<script>
+			
+			// Event Bubbling
+			document.getElementById('div-1').addEventListener('click', () => {alert('div-1');}, false);
+
+			document.getElementById('p-1').addEventListener('click', () => {alert('p-1');}, false);
+
+			// Event capturing
+			document.getElementById('div-2').addEventListener('click', () => {alert('div-2');}, true);
+			document.getElementById('p-2').addEventListener('click', () => {alert('p-2');} , true);
+
+			var p3 =  document.getElementById('p-3');
+			p3.addEventListener('click', function() {
+				console.log(this.id);
+			});
+		</script>
+	</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai33_8_DOM_addEventListener</title>
+	</head>
+
+	<body>
+		<h1>33.8.2.4. The value of THIS </h1>
+
+		<hr>
+
+		<p id="p-3">Hello</p>
+		<script>
+			// This pointer
+			// in anonymous function
+			/*var p3 =  document.getElementById('p-3');
+			p3.addEventListener('click', function() {
+				console.log(this.id);
+			}); */
+
+			// But arrow function do not have their own THIS context
+			var p3 =  document.getElementById('p-3');
+			p3.addEventListener('click', () => {
+				console.log(this.id);
+			});
+
+		</script>
+	</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai33_8_DOM_addEventListener</title>
+	</head>
+
+	<body>
+		<h1>33.8.2.5. Getting Data Into an Event Listener Using the Outer Scope Property </h1>
+
+		<hr>
+
+		<p id="p-3">Hello</p>
+		<br />
+		<p id="print">Print</p>
+		
+		<script>
+			var myPara = document.getElementById('p-3');
+			var someString = 'Data';
+
+			console.log('global_' + someString);
+
+			myPara.addEventListener('click', function() {
+				console.log('p-3_' + someString);
+
+				someString = 'Data again'; 
+			});
+
+			var print = document.getElementById('print');
+			print.addEventListener('click', function() {
+				console.log('print_' + someString);
+			});
+
+		</script>
+	</body>
+</html>

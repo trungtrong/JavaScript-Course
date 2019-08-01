@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+</head>
+
+<body>
+  <div class="menu">
+    <strong>Hi there!</strong> I am Trong.
+  </div>
+
+  <script type="text/javascript">
+    let menu = document.querySelector('.menu');
+    let clonedMenu = menu.cloneNode(true);
+
+    clonedMenu.querySelector('strong').innerHTML = 'Bye';
+
+    document.body.appendChild(clonedMenu);
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+  <style type="text/css">
+    .menu {
+      color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="menu list">Hi</div>
+
+  <script type="text/javascript">
+    let menu = document.querySelector('.menu');
+
+    /*
+    // Element.className
+    // get
+    console.log(menu.className);
+
+    //set
+    menu.className = "menu item"; */
+
+    // Element.classList
+    console.log(menu.classList);
+    // add method
+    menu.classList.add('active'); //=> <div class="menu list active"
+
+    // remove() method
+    menu.classList.remove('list'); // => <div class="menu active"
+
+    // toggle() method
+    menu.classList.toggle('list');
+
+    // contains method
+    if (menu.classList.contains('menu')) {
+      console.log('yes');
+    }
+
+    console.log(menu.style);
+    if (menu.style.color === 'blue') {
+      menu.style.color = 'red';
+    }
+
+    let computedStyle = window.getComputedStyle(menu);
+    console.log(computedStyle.color);
+  </script>
+</body>
+</html>

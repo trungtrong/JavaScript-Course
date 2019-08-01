@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bai 27. resonseText property</title>
+	</head>
+	<body>
+		<script>
+			// Step 1:
+			var xhr = new XMLHttpRequest();
+
+			// Step 2:
+			xhr.open('GET', 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Status', true);
+
+			//xhr.responseType = 'text';
+			xhr.onload = function() {
+				if (xhr.readyState === xhr.DONE &&
+						xhr.status === 200) {
+					//console.log(xhr.response);
+					console.log(xhr.responseText);
+				}
+			}
+
+
+			xhr.send();
+		</script>
+	</body>
+</html>

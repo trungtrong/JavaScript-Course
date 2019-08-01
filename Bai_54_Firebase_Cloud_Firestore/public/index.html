@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Welcome to Firebase Hosting</title>
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/6.1.1/firebase-app.js"></script>
+    <!-- Cloud Firestore -->
+    <script defer src="/__/firebase/6.1.1/firebase-firestore.js"></script>
+
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.1.1/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.1.1/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.1.1/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.1.1/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+
+  </head>
+  <body>
+    <h2>Example 1: Add Data</h2>
+    <h3>Using data that is stored in Firebase Cloud Firestore</h3>
+
+    <div id="message">
+      <input id="input-item" type="text" name="item" placeholder="Fill in your item" size="20" required />
+      <button id="add-button">Add</button>
+
+      <ul id="menu"></ul>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var todoList;
+
+        var db = firebase.firestore();
+
+        db.collection('todos').get().then(querySnapshot => {
+          var items = querySnapshot.docs;  // items is Array
+          
+          if (items) {
+            todoList = items.map(doc => {
+              var data = doc.data();
+              return data.content;
+            })
+          } else {
+            todoList = [];
+          }
+          render(todoList);
+        });     
+
+        var addButton = document.getElementById('add-button');
+        addButton.addEventListener('click', addItem);
+
+        function addItem() {
+          //M1: get value of the input
+          var input = document.getElementById('input-item');
+          var newItem = input.value;
+          
+          var data = { 
+            content : newItem 
+          };
+          
+          // M2: add to todoList array
+          if (newItem !== '') {
+            todoList.push(newItem);
+            
+            // add to Firebase Cloud Firestore
+            db.collection("todos").add(data)
+              .then(docRef => 
+                console.log('Document written with ID', docRef.get()))
+              .catch(error => 
+                console.log('Error adding document', error));
+            // M3: re-render
+            render(todoList);
+            input.value = '';
+          }
+        } 
+
+        function render(items) {
+          var htmlMenu = document.getElementById('menu');
+          var contentArr = items.map(item => {
+            return '<li>' + item + '</li>';
+          });
+
+          htmlMenu.innerHTML = contentArr.join('');
+        }
+      }); 
+    </script>
+  </body>
+</html>

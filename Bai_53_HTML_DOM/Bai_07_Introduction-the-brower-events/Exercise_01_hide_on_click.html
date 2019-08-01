@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter 3: Bai 01: Introduction the browser events </title>
+</head>
+
+<body>
+  <input id="elem" type="button" class="button" value="Click to hide the text">
+  <div id="text">Text</div>
+
+  <script type="text/javascript">
+    function hideText() {
+      text.style.display = 'none';
+    }
+
+    elem.addEventListener('click', hideText);
+  </script>
+</body>
+</html>

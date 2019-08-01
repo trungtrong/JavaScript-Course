@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Example AJAX</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			/**/
+			class HttpError extends Error {
+				constructor(response) {
+					super(`${response.status} for ${response.url}`);
+					this.name = 'HttpError';
+					this.response = response;
+				}
+			}
+
+			function loadJson(url) {
+				return fetch(url)
+					.then(response => {
+						if(response.status === 200) {
+							return response.json();
+						} else {
+							throw new HttpError(response);
+						}
+					});
+			}
+			/**
+			loadJson('https://no-such-user.json')
+				.catch(error => console.log(error)); */
+
+			function demoGithubUser() {
+  let name = prompt("Enter a name?", "iliakan");
+
+  return loadJson(`https://api.github.com/users/${name}`)
+    .then(user => {
+      alert(`Full name: ${user.name}.`);
+      return user;
+    })
+    .catch(err => {
+      if (err instanceof HttpError && err.response.status == 404) {
+        alert("No such user, please reenter.");
+        return demoGithubUser();
+      } else {
+        throw err; // (*)
+      }
+    });
+}
+
+demoGithubUser();
+		</script>
+	</body>
+</html>

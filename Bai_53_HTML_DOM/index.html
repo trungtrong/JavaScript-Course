@@ -1,0 +1,260 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33 JavaScript HTML DOM</title>
+</head>
+
+<body>
+  <h1>My Blog</h1>
+  <div id="entry1">
+  	<h2>Great day bird watching</h2>
+  	<p>Today I saw three...</p>
+  	<p>I took a couple of photos</p>
+  </div>
+</body>
+</html> -->
+
+<!--
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bai 33.2 DOM Methods</title>
+</head>
+
+<body>
+  <h1 id="heading">My Blog</h1>
+  <div id="entry1">
+  	<h2>Great day bird watching</h2>
+  	<p>Today I saw three...</p>
+  	<p>I took a couple of photos</p>
+  </div>
+
+  <script>
+  	document.getElementById('heading').innerHTML = "Hello World";
+  </script>
+</body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>33.3. DOM Elements</title>
+  </head>
+  <body>
+  	<h2>Finding HTML Elements by Id</h2>
+
+  	<p id="intro">Hello World</p>
+  	<p id="demo"></p>
+
+  	<h3>Example 2: Change CSS style</h3>
+  	<p id="para">Some text here</p>
+  	<button onclick="changeColor('blue')">blue</button>
+  	<button onclick="changeColor(red)">red</button>
+
+  	<script">
+  	  var myElement = document.getElementById('intro');
+  	  document.getElementById('demo').innerHTML = "Goodbye " + myElement.innerHTML;
+  	</script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>33.3. DOM Elements</title>
+  </head>
+  <body>
+  	<h2>Finding HTML Elements by Id</h2>
+
+  	<h3>Example 2: Change CSS style</h3>
+  	<p id="para">Some text here</p>
+  	<button onclick="changeColor('blue')">blue</button>
+  	<button onclick="changeColor('red')">red</button>
+
+  	<script src="scripts/changeColor.js"></script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>33.3. DOM Elements</title>
+  </head>
+  <body>
+  	<h2>Finding HTML Elements by Tag Name</h2>
+  	<h3>Change content of an element following index: getElementsByTagName</h3>
+  	<div id="parent">
+  	  <p>The DOM is very useful</p>
+  	  <p>The example</p>
+  	</div>
+  	<h3 id="main"></h3>
+
+  	<button onclick="countingParaElement();">Counting P</button>
+
+  	<button onclick="paraElementInParent(0);">Change P</button>
+
+  	<script>
+  	function countingParaElement() {
+  	  var parent = document.getElementsByTagName('p');
+  	  document.getElementById('main').innerHTML = "There are " +parent.length + " paragrash in this document";
+  	}
+
+  	function paraElementInParent(index) {
+  		var parent = document.getElementById('parent');
+  		var childParas = parent.getElementsByTagName('p');
+  		document.getElementById('main').innerHTML = 'This is index[' + index + '] '+  childParas[index].innerHTML;
+  	}
+  	</script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>33.3. DOM Elements</title>
+  </head>
+  <body>
+  	<h2>Finding HTML Elements by Class Name: getElementsByClassName()</h2>
+  	
+  	<h3>Ex1: Get all elements that HAVE A class of 'child-1'</h3>
+  	<div id="parent-id">
+  	  <p class="child-1 hello">The DOM is very useful</p>
+  	  <p>The example</p>
+  	  <p class="child-1">Hello Ajinomoto</p>
+  	</div>
+
+  	<h4 class="child">Chuong 4</h4>
+
+  	<p id="print-1-1"></p>
+  	<p id="print-1-2"></p>
+
+  	<button onclick="getAllChild1();">Get child1</button>
+
+  	<p>-------------------------------------------</p>
+  	<p>Example 2: </p>
+  	<div id="parent-id-2">
+  	  <p class="child-2">The DOM is very useful</p>
+  	  <p>The example</p>
+  	  <p class="child-2">Hello Ajinomoto</p>
+  	</div>
+
+  	<p id="print-2-1"></p>
+  	<p id="print-2-2"></p>
+
+  	<button onclick="getChildFormParent();">Get child1</button>
+
+  	<script>
+  	/*Ex1 :  Get all elements that have a class of 'child-1'*/
+  	function getAllChild1() {
+  		var allOfChild1 = document.getElementsByClassName('child-1');
+  		document.getElementById('print-1-1').innerHTML = 'print itself = ' + allOfChild1;
+  		document.getElementById('print-1-2').innerHTML = 'Value of element[2] =' + allOfChild1[0].innerHTML;
+  		console.log(allOfChild1[0]);
+  	}
+
+  	/*Ex2 : */
+  	function getChildFormParent() {
+  		var parent = document.getElementById('parent-id-2');
+  		var child2 = parent.getElementsByClassName('child-2');
+  		console.log(child2);
+  		console.log(child2[0]);
+  	}
+  	</script>
+  </body>
+</html> -->
+
+<!--
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>33.3. DOM Elements</title>
+	<style>
+	</style>
+  </head>
+  <body>
+  	<h2>33.3.4.1. Finding HTML Elements by CSS Selectors: querySelector()</h2>
+  	
+  	<h3>Ex1: Get all elements that HAVE A class of 'child-1'</h3>
+  	<div id="parent-id">
+  	  <p class="child-1">The DOM is very useful</p>
+  	  <p>The example</p>
+  	  <p class="child-1">Hello Ajinomoto</p>
+  	</div>
+
+  	<h4 class="child">Chuong 4</h4>
+
+  	<p id="print-1-1"></p>
+  	<p id="print-1-2"></p>
+
+  	<button onclick="findSelector();">Get child1</button>
+
+  	<p>-------------------------------------------</p>
+
+
+  	<script>
+  	  function findSelector() {
+  		var firstElement = document.querySelector("div#parent-id p");
+  		console.log(firstElement , typeof(firstElement));
+  		firstElement.style.color = 'tomato';
+  	  }
+  	</script>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+  	<meta charset="utf-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>33.3. DOM Elements</title>
+	<style>
+	</style>
+  </head>
+  <body>
+  	<h2>33.3.4.2. Finding HTML Elements by CSS Selectors: querySelectorAll()</h2>
+  	
+  	<h3>Ex1: Get all elements that HAVE A class of 'child-1'</h3>
+  	<div id="parent-id">
+  	  <p class="child-1">The DOM is very useful</p>
+  	  <p>The example</p>
+  	  <p class="child-1">Hello Ajinomoto</p>
+  	</div>
+
+  	<h4 class="child">Chuong 4</h4>
+
+  	<p id="print-1-1"></p>
+  	<p id="print-1-2"></p>
+
+  	<button onclick="findSelectorAll();">Get child1</button>
+
+  	<p>-------------------------------------------</p>
+
+
+  	<script>
+  	  function findSelectorAll() {
+  	  	var matches = document.querySelectorAll('p');
+  	  	document.getElementById('print-1-1').innerHTML = matches;
+  	  	console.log(matches);
+  	  }
+  	</script>
+  </body>
+</html>

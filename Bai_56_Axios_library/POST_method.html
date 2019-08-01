@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>axios library</title>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+	
+	<body>
+		<h1>POST method</h1>
+		<p id="print"></p>
+
+		<script> 
+			/**************************
+			// Method 1
+			axios({
+				method: 'post',
+				url: 'http://localhost:9081/todos/',
+				data: {
+					firstName: 'Fred',
+					lastName: 'Flintstone'
+					}
+				}); */
+
+			/**************************/
+			// 				Method 2	
+			axios.post('http://localhost:9081/todos/', {
+										firstName: 'Fred',
+										lastName: 'Flintstone'
+			})
+				.then(response => console.log(response.config))
+				.catch(error => console.log(error));
+    </script>
+	</body>
+</html>

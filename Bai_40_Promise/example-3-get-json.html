@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Example AJAX</title>
+	</head>
+	
+	<body>
+		<script type="text/javascript">
+			let names = ['iliakan', 'remy', 'jeresig'];
+
+
+			let requests = names.map(name => fetch(`https://api.github.com/users/${name}`));
+			// Array[Promise{resolved: Response}] 
+			// b/c it takes some time
+			// If immediately =>  Promise{<pending>}
+
+			Promise.all(requests)
+				// all responses are ready, we can show HTTP request
+				.then(responses => {
+					for (let response of responses) {
+						console.log(`${response.url}: ${response.status}`);
+					}
+
+					return responses;
+				})
+				// map array of responses into array of responses
+				.then(responses =>  Promise.all(responses.map(r => r.json())))
+				// all JSON answers are parsed
+				.then(users => users.forEach(user => console.log(user.name))); 
+		</script>
+	</body>
+</html>

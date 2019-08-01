@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bai 34_1_Local Storage</title>
+  </head>
+  
+  <body>
+    <div>
+      <label>Item</label>
+      <input id="input-item" type="text" name="item" required />
+      <button id="add-button" type="button">Add</button>
+      <br />
+    </div>
+
+    <div>
+      <ul id="menu">
+      </ul>
+    </div>
+
+    <script>
+      var storageKey = 'menuList';
+      var storageData = localStorage.getItem(storageKey);
+      
+      // contain value of localStorage
+      // and value of <ul> list
+      var menuList;
+      var currentLastIndex;
+
+      //contain <li>a<button>Remove</button></li>
+      var menuContent;
+
+      // in this case, localStorage is empty
+      // => storageData = null
+      if (storageData) {
+        menuList = JSON.parse(storageData);
+        currentLastIndex = menuList.length;
+      } else { 
+        // if storageData = null , menuList = <empty array>
+        menuList = [];
+      }
+
+      function render(menuList, currentLastIndex) {
+        var menu = document.getElementById('menu');
+        if (menuList) {
+          var index = 0;
+
+          //debug
+          console.log(menuList);
+
+          menuContent = menuList.map(item => {
+            if (index <= currentLastIndex) {
+              
+              var buttonId = ' id="remove-' + index + '"';
+              var buttonOnclick = ' onclick="removeItem(' + index + ');"';
+              var buttonTextContent = 'Remove';
+              var button = '<button' + buttonId + buttonOnclick + '>' + buttonTextContent + '</button>';
+              index++;
+
+              return '<li>' + item + ' ' + button + '</li>';
+            }
+          });
+
+          menu.innerHTML = menuContent.join('');
+        }
+      }
+
+      // the first render when brower load
+      render(menuList, currentLastIndex);
+
+      /****************************************/
+      //              ADD Button
+      var addButton = document.getElementById('add-button');
+      addButton.addEventListener('click', addItem);
+
+      function addItem(event) {
+        //Step 1: get value of 
+        var input = document.getElementById('input-item');
+        var value = input.value;
+        
+        //console.log(value);
+
+        // Step 2: check that value of input is empty 
+        // even though , user try to click button 
+        if (value) {
+          menuList.push(value);
+        } else {
+          alert('You have never entered a new item');
+        }
+
+        // Step 3: re-render
+        currentLastIndex = menuList.length;
+        render(menuList, currentLastIndex);
+
+        // Step 4: clear the content of text field
+        input.value = '';
+
+        // Step 5: storage to localStorage
+        localStorage.setItem(storageKey, JSON.stringify(menuList));
+      }
+
+      /*******************************************/
+      //              REMOVE 
+      function removeItem(index) {
+        // Step 1: remove it out of <ul>
+        var removeButton = document.getElementById('remove-' + index);
+        var itemIsDeleted = removeButton.parentNode;
+        itemIsDeleted.remove();
+
+        // Step 2: remove it out of menuList array
+        // using arr.splice(start, amount)
+        menuList.splice(index, 1);
+
+        // Step 3: remove it out if menuContent array
+        menuContent.splice(index, 1);
+
+        // Step 4: re-render
+        currentLastIndex= menuList.length; 
+        render(menuList, currentLastIndex);
+
+        // Step 5: renew the value of localStorage
+        localStorage.setItem(storageKey, JSON.stringify(menuList)); 
+      }
+
+    </script>
+  </body>
+</html>
