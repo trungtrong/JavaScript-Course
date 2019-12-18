@@ -17,11 +17,22 @@
 
 			var dataJSON;
 			const instance = axios.create({
-				baseURL: 'http://localhost:9081'
+				baseURL: 'http://localhost:9801'
 			});
 
-			instance.put('/todos/4', {
+			instance.put('/employees/4', {
 				content: 'Take the shower'
+			})
+				.then(response => console.log(response.data))
+				.catch(error => console.log(error.request));
+
+			instance.put('/employees/4', {
+				content: 'Take the '
+			})
+				.then(response => console.log(response.data))
+				.catch(error => console.log(error.request));
+			instance.put('/employees/4', {
+				content: 'Take  shower'
 			})
 				.then(response => console.log(response.data))
 				.catch(error => console.log(error.request));

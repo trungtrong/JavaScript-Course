@@ -1,0 +1,26 @@
+@keyframes play120 {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: -2880px 0px;
+  }
+}
+.shapeshifter {
+  animation-duration: 2000ms;
+  animation-timing-function: steps(120);
+
+  /* add fil-mode= forwards 
+  - so that we don't want to reset animating icon
+  */
+  animation-fill-mode: forwards;
+  
+  width: 24px;
+  height: 24px;
+  background-repeat: no-repeat;
+
+  margin-top: 900px;
+}
+.shapeshifter.play {
+  animation-name: play120;
+}

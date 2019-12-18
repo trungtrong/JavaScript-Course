@@ -5,7 +5,7 @@ function readFilePromise(path) {
 	return new Promise((resolve, reject) => {
 		fs.readFile(path, 'utf8', function(err, data) {
 			if (err) {
-				reject(err);
+				reject(`${path} error`);
 			} else {
 				resolve(data);
 			}
@@ -14,10 +14,12 @@ function readFilePromise(path) {
 }
 
 async function run() {
-	var song = await readFilePromise('song1.txt');
-	var text = await readFilePromise('text1.txt');
-	console.log(song); 
-	console.log(text);
+	console.log('lallaa 1');
+	var song = await readFilePromise('./song2.txt');
+	var text = await readFilePromise('./text1.txt');
+	console.log('1', song); 
+	console.log('2', text);
+	console.log('lallaa 2');
 	return [song, text];
 }
 

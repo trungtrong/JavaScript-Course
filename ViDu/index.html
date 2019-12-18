@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Learning</title>
+	<style>
+		div#list p {
+			color: tomato;
+		}
+		/*
+		div#list p {
+			color: tomato;
+		}
+		div[id ~="list2"] > p {
+			color: lightblue;
+		}
+
+		.text01:last-child {
+			color: violet;
+		} */
+
+		/****************************/
+		/*.container {
+			width: 300px;
+			height: 300px;
+			background: tomato;
+			position: relative;
+		}
+
+		.parent {
+			width: 200px;
+			height: 200px;
+			background: violet;
+			position: absolute;
+			z-index: -110;
+		}
+
+		.child {
+			width: 100px;
+			height: 100px;
+			background: lightblue;
+			position: absolute;
+			left: 50%;
+			z-index: 0;
+		}
+		
+		.child2 {
+			width: 100px;
+			height: 100px;
+			background: green;
+			position: absolute;
+			left: 50%;
+			top: 20%;
+			z-index: -1;
+		}	*/
+
+		#panel.container .parent {
+			width: 100px;
+			height: 100px;
+			background: yellow;
+		}
+
+		#panel .parent {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<!-- <body>
+
+
+	
+	<div id="list">
+		<p>Hello</p>
+		<p>Now <span>Bye</span></p>
+	</div>
+
+	<div id="list2 item">
+		<p>Hello</p>
+		<p>
+			<p>Bye</p>
+		</p>
+	</div>
+
+	<div>
+		<h2>he</h2>
+		<p class="text01">Lala</p>
+	</div> 
+
+	<div id="panel" class="container">
+		<div class="parent">
+			<div class="child"></div>
+			<div class="child2"></div>
+		</div>
+	</div>
+</body>
+</html> -->
+<body>
+<form id="formElem">
+  <input type="text" name="firstName" value="John">
+  Picture: <input type="file" name="picture" accept="image/*">
+  <input type="submit">
+</form>
+
+<script>
+  formElem.onsubmit = async (e) => {
+    e.preventDefault();
+    let response = await fetch('http://localhost:3000/api/user/avatar', {
+      method: 'POST',
+      body: new FormData(formElem)
+    });
+
+    console.log(new FormData(formElem));
+    let result = await response.json();
+
+    alert(result.message);
+  };
+</script>
+</body>
+</html>

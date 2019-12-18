@@ -1,0 +1,142 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="sprite_60fps.css"/>
+</head>
+<body>
+  <div class="shapeshifter" style="background-image: url(sprite_60fps.svg)" id="iconAnimate">
+  	
+  </div>
+  <button>Go</button>
+
+  <script>
+  	var icon = document.getElementById('iconAnimate');
+  	var elementHeight = icon.clientHeight;
+
+  	document.addEventListener('scroll', animate);
+
+  	function inView() {
+  		var windowHeight = window.innerHeight;
+  		var scrollY = window.scrollY || window.pageYOffset;
+
+  		var scrollPosition = scrollY + windowHeight;
+
+			// console.log('2', scrollY);
+
+  		var elementPosition = icon.getBoundingClientRect().top + scrollY + elementHeight;
+  		/*
+  		- elementHeight
+  		- scrollY = size of web-page
+  		- getBoundingClientRect().top: the distance
+  			between icon with top of page
+
+  		*/
+
+
+  		// console.log('elementPosition =', elementPosition);
+
+  		if (scrollPosition > elementPosition) {
+  			return true;
+  		} else {
+  			return false;
+  		}
+
+
+  	}
+
+  	function animate() {
+  		if (inView()) {
+  			icon.classList.add('play');
+  		} else {
+  			icon.classList.remove('play');
+  		}
+  	}
+
+
+  	var button = document.querySelector('button');
+  	button.addEventListener('click', run);
+
+  	function run() {
+  		/*
+  		-	window.scrollBy(x, y) 
+			+	scrolls thepage relative to its current position
+
+			Ex: window.scrollBy(0, -100)
+				=> scroll back(up) 100px
+  		*/
+  		// window.scrollBy(0, -100);
+
+			/*
+  		-	window.scrollTo(pageX, pageY) 
+			+	scrolls thepage relative to its current position
+
+			Ex: window.scrollTo(0, 0)
+				=> scroll up, close to top page
+
+				+ window.scrollTo(, 100)
+				=> scroll to the position that far away top of page by 100px
+  		*/
+  		var iconPosition = button.getBoundingClientRect().top + window.scrollY + elementHeight;
+  		
+  		var newP = iconPosition;
+  		
+  		var time; 
+  		time = setInterval(function() {
+  			newP = newP - 80;
+  			window.scrollTo(0, newP);
+  			if (newP < 0) {	
+  				clearInterval(time);
+  			}
+  		}, 50);
+  	}
+
+  </script>
+</body>
+</html>
+<!-- 
+
+1- window.innerWidth / innerHeight
+	=> size of screen
++ Ex: if size of screen = 604px
+	=> window.innerHeight equals always 604px
+
+
+-----------------------------------------------------------
+
+2 - Get the current scroll: 
+	{	window.pageXOffset/pageYOffset }
+	OR {	window.scrollX/scrollY }
+			+depending on browser
+
+==> distance <top of scrollbar, top of web-page>
+
++ Ex:  console.log('page', window.pageYOffset)
+
+-----------------------------------------------------------
+
+
+3- document.documentElement.clientWidth/ innerHeight
+	=> size of content of the <html>
+	=size of Viewport
+
++ b/c document.documentElement = <html> as root
+
+	2-2: document.documentElement.offsetHeight
+	2-3: document.documentElement.scrollHeight
+
+	console.log('1=', document.documentElement.scrollHeight);
+	
+	console.log('2=', document.documentElement.offsetHeight);
+	
+	console.log('3=', document.documentElement.clientHeight);
+
+2 -4: icon.scrollHeight/offsetHeight/clientHeight
+	= width of icon's content 
+
+
+-----------------------------------------------------------
+4-			icon.getBoundingClientRect().top
+
+=> return the size of element and its position relative to the viewport
+
+=> A = size + distance <its top , current top of page content>
+ -->

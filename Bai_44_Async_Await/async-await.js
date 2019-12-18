@@ -40,15 +40,26 @@ setTimeout(() => console.log('a')); */
 
 // Exercise 1:
 
-async function loadJson(url) {
-	let response = await fetch(u);
+// async function loadJson(url) {
+// 	let response = await fetch(u);
 	
-	if (response.status === 200) {
-		return response.json();
-	}
+// 	if (response.status === 200) {
+// 		return response.json();
+// 	}
 
-	throw new Error(response.status);
+// 	throw new Error(response.status);
+// }
+
+// loadJson('https://no-such-user')
+// 	.catch(console.log);
+
+
+async function loadJson() {
+	const good = await Promise.resolve(null);
+	const bad = await Promise.resolve('0');
+	return [good, bad];	
 }
 
-loadJson('https://no-such-user')
-	.catch(console.log);
+loadJson()
+	.then(results => console.log('lalla',results[0], results[1]))
+	.catch(err => console.log('err', err));

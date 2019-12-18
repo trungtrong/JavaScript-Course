@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <style>
+        .c1 {
+            color: red;
+        }
+
+        .c2 {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <p class="c1 c2">Allo</p>
+	<script>
+// 		function addLinks () {
+
+//     		for (let i=0; i<5; i++) {
+//        		let link = document.createElement("a");
+//         	link.innerHTML = "Link " + i;
+//         	document.body.appendChild(link);
+
+//         	link.onclick = function () {
+//             	alert(i);
+//         	};
+//     		}
+// }
+
+// // click vào 5 link đều ra số 5
+// window.onload = addLinks;
+
+    (function(){
+    // all your code here
+    var foo = function() {
+        console.log('a');
+    };
+    window.onload = foo();
+    // ...
+    })();
+
+	</script>
+</body>
+</html>

@@ -25,7 +25,19 @@
 
 			/**************************/
 			// 				Method 2	
-			axios.post('http://localhost:9081/todos/', {
+			axios.post('http://localhost:9801/employees/', {
+										firstName: 'Fred',
+										lastName: 'Flintstone'
+			})
+				.then(response => console.log(response.config))
+				.catch(error => console.log(error));
+			axios.post('http://localhost:9801/employees/', {
+										firstName: 'Fred',
+										lastName: 'Flintstone'
+			})
+				.then(response => console.log(response.config))
+				.catch(error => console.log(error));
+			axios.post('http://localhost:9801/employees/', {
 										firstName: 'Fred',
 										lastName: 'Flintstone'
 			})

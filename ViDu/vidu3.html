@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $('a').on('click', function () {
+  $(this.hash).toggleClass('active').focus();
+});
+
+$('div').on('focusout', function () {
+  $(this).removeClass('active');
+});
+});
+</script>
+<style>
+	div {
+  display: none;
+}
+.active {
+  display: block;
+}
+</style>
+</head>
+<body>
+
+<a href="#example">Example</a>
+<div id="example" tabindex="-1">
+  Lorem ipsum <a href="http://example.com">dolor</a> sit amet.
+</div>
+
+</body>
+</html>

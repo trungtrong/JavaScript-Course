@@ -7,7 +7,5 @@ RealWorld.png
 
 ##Dependency Directories
 *node_modules/
+Bai_40_Promise/.vscode/launch.json
 
-##Package
-*.package.json
-*.package-lock.json
